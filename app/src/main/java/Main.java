@@ -1,13 +1,15 @@
-//import java.util.Random;
+import java.io.IOException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import jp.ac.uryukyu.ie.e225737.sinkou;
+import jp.ac.uryukyu.ie.e225737.Level1;
+import jp.ac.uryukyu.ie.e225737.level2;
 
 public class Main {
     /**
      * @param args
      */
-    public static void main(String[] args){
+    public static void main(String[] args)throws IOException{
         //int sleepTime = 2500;
         //int bound = 100;
         boolean roop = true;
@@ -25,19 +27,57 @@ public class Main {
             //Thread.sleep(1000);
             while(roop){
                 System.out.println("レベルどうする？");
-                int mySelect = new Scanner(System.in).nextInt();
-                if(mySelect == 1){
+                try{
+                    int mySelect = new Scanner(System.in).nextInt();
+                
+                    if(mySelect == 1){
 
-                    //System.out.println("lev1開始");
-                    sinkou lev1 = new sinkou();
-                    lev1.Sinkou();
-                    roop = false;
-                } else if(mySelect == 2){
-                    System.out.println("lev2開始");
-                    roop = false;
-                }else{
-                    System.out.println("そんなlevはないぞー");
-                    //Thread.sleep(1000);
+                        //System.out.println("lev1開始");
+                        try{
+                            Level1 lev1 = new Level1();
+                            lev1.Sinkou();
+                            roop = false;
+                        }catch (IllegalArgumentException e){
+                            System.out.println("IllegalArgumentExceptionが発生");
+                        }catch(InputMismatchException e){
+                            System.out.println("半角数字で答えなさい");
+                            try{
+                                Thread.sleep(1000);
+
+                            }catch(InterruptedException ex){
+
+                            }
+                        }
+                    } else if(mySelect == 2){
+                        try{
+                            level2 lev2 = new level2();
+                            lev2.Sinkou();
+                            roop = false;
+                        }catch(IllegalArgumentException e){
+                            System.out.println("IllegalArgumentExceptionが発生");
+                        }catch(InputMismatchException e){
+                            System.out.println("半角数字で答えなさい！");
+                            try{
+                                Thread.sleep(1000);
+
+                            }catch(InterruptedException ex){
+
+                            }
+                        }
+                    }else if(mySelect == 0){
+                        System.out.println("システムを中断します。");
+                        break;
+                    }else{
+                        System.out.println("そんなlevはないぞー");
+                        //Thread.sleep(1000);
+                    }
+                }catch(InputMismatchException e){
+                    System.out.println("半角数字で答えて");
+                    try{
+                        Thread.sleep(1000);
+                    }catch(InterruptedException ex){
+
+                    }
                 }
             }
 
