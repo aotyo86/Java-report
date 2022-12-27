@@ -1,5 +1,4 @@
 package jp.ac.uryukyu.ie.e225737;
-import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -32,8 +31,11 @@ public class Level1 extends sinkou{
             Thread.sleep(sleepTime);
             System.out.println(val5);
             Thread.sleep(sleepTime);
-            System.out.println("答えはいくつ？");
-            int myAnswer = new Scanner(System.in).nextInt();
+            
+            System.out.println("答えはいくつ？");          
+            Scanner scanner = new Scanner(System.in);
+            int myAnswer = scanner.nextInt();
+            scanner.close();
 
             if (myAnswer == answer){
                 System.out.println("あたり");
