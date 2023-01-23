@@ -2,6 +2,10 @@ package jp.ac.uryukyu.ie.e225737;
 import java.util.Random;
 import java.util.Scanner;
 
+/**
+ * level1クラス
+ * レベルを1と入力したらこちらが進行を開始する。
+ */
 public class Level1 extends sinkou{
     int sleepTime = 2500;
     int bound_num = 99;
